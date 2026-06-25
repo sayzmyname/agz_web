@@ -1,0 +1,28 @@
+<!-- Home content for HTMX requests -->
+<div class="flex flex-col items-center justify-center min-h-[70vh] px-4 py-12">
+    <h1 class="flex flex-col items-center text-4xl sm:text-6xl font-black tracking-widest text-gray-950 uppercase text-center leading-none mb-6">
+        <span class="block">SHOP</span>
+        <span class="block">IT</span>
+        <span class="block">TOP</span>
+    </h1>
+    <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-12 text-center">
+        Select a category to browse our collection
+    </p>
+</div>
+        </h2>
+        <p class="text-lg text-gray-600 mb-8">
+            Select a category to browse our collection
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            {% for category in categories %}
+            <a href="{% url 'main:catalog' category.slug %}" 
+               hx-get="{% url 'main:catalog' category.slug %}" 
+               hx-target="#main-content" 
+               hx-push-url="true"
+               class="block p-8 border border-gray-200 hover:border-gray-300 transition-colors">
+                <h3 class="text-xl font-bold">{{ category.name|upper }}</h3>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</main>

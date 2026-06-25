@@ -26,7 +26,7 @@ class CatalogView(TemplateView):
         'color': lambda queryset, value: queryset.filter(color__iexact=value), # через лямбду пишут крутые программисты, а ваще по моему так легче чем If else
         'min_price': lambda queryset, value: queryset.filter(price__gte=value),
         'max_price': lambda queryset, value: queryset.filter(price__lte=value),
-        'size': lambda queryset, value: queryset.filter(product_size__size_name=value),
+        'size': lambda queryset, value: queryset.filter(product_sizes__size_name=value),
     }
 
     def get_context_data(self, **kwargs):
